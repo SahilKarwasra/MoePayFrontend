@@ -1,0 +1,115 @@
+[versions]
+# Build tools
+agp = "9.1.1"
+kotlin = "2.4.20"
+
+# Compose
+composeMultiplatform = "1.12.1"
+material3 = "1.12.0-alpha03"
+# Keep navigation-compose aligned with the lifecycle version used by Compose Multiplatform
+androidx-lifecycle = "2.11.0"
+navigation-compose = "2.10.0-rc01"
+
+# AndroidX
+androidx-activity = "1.13.0"
+androidx-core = "1.19.1"
+androidx-core-splashscreen = "1.2.0"
+androidx-datastore = "1.3.0"
+
+# Kotlinx
+kotlinx-coroutines = "1.11.0"
+kotlinx-serialization = "1.12.0"
+
+# Third party
+koin = "4.2.2"
+ktor = "3.6.0"
+kermit = "2.2.0"
+
+# Project
+projectApplicationId = "com.laarasoft.moepay"
+projectVersionName = "1.0"
+projectVersionCode = "1"
+projectMinSdkVersion = "26"
+projectTargetSdkVersion = "37"
+projectCompileSdkVersion = "37"
+
+[libraries]
+# Kotlin
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+# Kotlinx
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+# AndroidX
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splashscreen" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore" }
+
+# Compose
+compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
+compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "composeMultiplatform" }
+compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "composeMultiplatform" }
+compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+compose-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "composeMultiplatform" }
+compose-uiTooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "composeMultiplatform" }
+compose-uiToolingPreview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "composeMultiplatform" }
+jetbrains-lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+jetbrains-lifecycle-runtime-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+jetbrains-navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
+
+# Koin
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-compose-viewmodel = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
+
+# Ktor
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# Logging
+touchlab-kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+
+# Gradle plugins (used by build-logic)
+android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+compose-compiler-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
+compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeMultiplatform" }
+
+[plugins]
+# Convention plugins (build-logic)
+convention-android-application = { id = "com.laarasoft.moepay.convention.android.application", version = "unspecified" }
+convention-kmp-library = { id = "com.laarasoft.moepay.convention.kmp.library", version = "unspecified" }
+convention-cmp-library = { id = "com.laarasoft.moepay.convention.cmp.library", version = "unspecified" }
+convention-cmp-feature = { id = "com.laarasoft.moepay.convention.cmp.feature", version = "unspecified" }
+convention-cmp-application = { id = "com.laarasoft.moepay.convention.cmp.application", version = "unspecified" }
+convention-app-config = { id = "com.laarasoft.moepay.convention.app.config", version = "unspecified" }
+
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+[bundles]
+koin-compose = [
+    "koin-core",
+    "koin-compose",
+    "koin-compose-viewmodel",
+]
+
+ktor-common = [
+    "ktor-client-core",
+    "ktor-client-content-negotiation",
+    "ktor-client-logging",
+    "ktor-client-auth",
+    "ktor-serialization-kotlinx-json",
+]
