@@ -1,0 +1,33 @@
+<resources>
+    <string name="back">Back</string>
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="continue_button">Continue</string>
+
+    <string name="profile_title">Tell us about you</string>
+    <string name="profile_subtitle">Use your legal name. It's how people will recognise you when you pay them.</string>
+    <string name="profile_first_name">First name</string>
+    <string name="profile_first_name_placeholder">Aarav</string>
+    <string name="profile_last_name">Last name</string>
+    <string name="profile_last_name_placeholder">Sharma</string>
+    <string name="profile_email">Email (optional)</string>
+    <string name="profile_email_placeholder">you@example.com</string>
+    <string name="profile_email_invalid">Enter a valid email address.</string>
+
+    <string name="username_title">Pick a username</string>
+    <string name="username_subtitle">Friends can find and pay you with it. You can't change it later.</string>
+    <string name="username_field">Username</string>
+    <string name="username_placeholder">yourname</string>
+    <string name="username_rules">3–30 characters. Start with a letter. Letters, numbers, '_' and '.' only.</string>
+    <string name="username_checking">Checking availability…</string>
+    <string name="username_available">@%1$s is available</string>
+    <string name="username_taken">That username is taken</string>
+    <string name="username_reserved">That username isn't available</string>
+    <string name="username_invalid">That doesn't look like a valid username</string>
+
+    <string name="review_title">All set?</string>
+    <string name="review_subtitle">Check your details before we create your account.</string>
+    <string name="review_phone">Mobile</string>
+    <string name="review_email">Email</string>
+    <string name="review_not_added">Not added</string>
+    <string name="review_finish">Finish setup</string>
+</resources>
