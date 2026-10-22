@@ -1,0 +1,11 @@
+<resources>
+    <style name="Theme.MoePay" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/moepay_background</item>
+    </style>
+
+    <style name="Theme.MoePay.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/moepay_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.MoePay</item>
+    </style>
+</resources>

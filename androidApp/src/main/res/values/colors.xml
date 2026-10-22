@@ -1,0 +1,4 @@
+<resources>
+    <color name="moepay_background">#FFFFFFFF</color>
+    <color name="moepay_launcher_background">#FF000000</color>
+</resources>
