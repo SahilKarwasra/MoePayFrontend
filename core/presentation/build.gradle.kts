@@ -7,6 +7,7 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core.domain)
             implementation(libs.jetbrains.lifecycle.runtime.compose)
+            api(libs.kotlinx.datetime)
         }
     }
 }
