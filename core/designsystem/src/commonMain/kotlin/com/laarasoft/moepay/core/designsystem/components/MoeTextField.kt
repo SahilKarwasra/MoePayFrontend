@@ -18,6 +18,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.input.KeyboardActionHandler
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.OutputTransformation
 import androidx.compose.foundation.text.input.TextFieldLineLimits
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.material3.MaterialTheme
@@ -43,6 +44,7 @@ fun MoeTextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     onKeyboardAction: KeyboardActionHandler? = null,
     inputTransformation: InputTransformation? = null,
+    outputTransformation: OutputTransformation? = null,
     leadingContent: (@Composable () -> Unit)? = null,
     trailingContent: (@Composable () -> Unit)? = null,
 ) {
@@ -74,6 +76,7 @@ fun MoeTextField(
             enabled = enabled,
             lineLimits = TextFieldLineLimits.SingleLine,
             inputTransformation = inputTransformation,
+            outputTransformation = outputTransformation,
             keyboardOptions = keyboardOptions,
             onKeyboardAction = onKeyboardAction,
             interactionSource = interactionSource,
