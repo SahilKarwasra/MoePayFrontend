@@ -5,7 +5,7 @@ import com.laarasoft.moepay.core.domain.util.EmptyResult
 import com.laarasoft.moepay.core.domain.util.Result
 
 interface AuthService {
-    /** [phoneNumber] in E.164, e.g. +919876543210. */
+    /** [phoneNumber] in E.164, e.g. +447911123456. */
     suspend fun sendOtp(phoneNumber: String): Result<OtpChallenge, DataError.Remote>
 
     /** On success the returned session is not persisted yet; the caller stores it. */
