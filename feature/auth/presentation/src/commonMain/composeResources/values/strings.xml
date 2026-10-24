@@ -10,9 +10,9 @@
     <string name="phone_title">What's your number?</string>
     <string name="phone_subtitle">We'll text you a one-time code to confirm it's you.</string>
     <string name="phone_field_title">Mobile number</string>
-    <string name="phone_placeholder">98765 43210</string>
+    <string name="phone_placeholder">07911 123456</string>
     <string name="phone_hint">Standard SMS rates may apply.</string>
-    <string name="phone_error_invalid">Enter a valid 10-digit mobile number.</string>
+    <string name="phone_error_invalid">Enter a valid UK mobile number, like 07911 123456.</string>
     <string name="continue_button">Continue</string>
 
     <string name="otp_title">Enter the code</string>

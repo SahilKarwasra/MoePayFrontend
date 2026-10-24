@@ -116,7 +116,7 @@ fun PhoneNumberScreen(
             isError = state.error != null,
             enabled = !state.isSendingOtp,
             inputTransformation = DigitsOnlyTransformation
-                .then(InputTransformation.maxLength(PhoneNumberValidator.NATIONAL_NUMBER_LENGTH)),
+                .then(InputTransformation.maxLength(PhoneNumberValidator.MAX_INPUT_LENGTH)),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Phone,
                 imeAction = ImeAction.Done,
@@ -134,7 +134,7 @@ fun PhoneNumberScreen(
 private fun CountryCode() {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Text(
-            text = "🇮🇳  ${PhoneNumberValidator.COUNTRY_CODE}",
+            text = "${PhoneNumberValidator.FLAG}  ${PhoneNumberValidator.COUNTRY_CODE}",
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onBackground,
         )

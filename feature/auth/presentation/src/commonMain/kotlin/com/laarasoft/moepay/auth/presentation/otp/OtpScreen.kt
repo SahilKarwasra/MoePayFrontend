@@ -162,7 +162,7 @@ private fun Int.asCountdown(): String {
 private fun OtpScreenPreview() {
     MoeTheme {
         OtpScreen(
-            state = OtpState(formattedPhoneNumber = "+91 98765 43210", resendSecondsLeft = 27),
+            state = OtpState(formattedPhoneNumber = "+44 7911 123456", resendSecondsLeft = 27),
             onAction = {},
         )
     }

@@ -159,7 +159,7 @@ private fun CardStack(modifier: Modifier = Modifier) {
                     color = colorScheme.background.copy(alpha = 0.6f),
                 )
                 Text(
-                    text = "₹ 24,500.00",
+                    text = "£2,450.00",
                     style = MaterialTheme.typography.headlineMedium,
                     color = colorScheme.background,
                 )
