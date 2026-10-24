@@ -1,0 +1,136 @@
+<resources>
+    <string name="ewallet">eWallet</string>
+    <string name="balance">Balance</string>
+    <string name="toggle_balance">Show or hide balance</string>
+    <string name="my_qr">My QR</string>
+    <string name="history">History</string>
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="retry">Try again</string>
+    <string name="load_error_title">Couldn't load your wallet</string>
+
+    <string name="security">Security</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Log out</string>
+    <string name="logout_dialog_title">Log out of MoePay?</string>
+    <string name="logout_dialog_message">You'll need your mobile number and a one-time code to sign back in.</string>
+    <string name="wallet_pin">Wallet PIN</string>
+    <string name="pin_not_set">Not set up yet</string>
+    <string name="pin_on">On · approves every payment</string>
+    <string name="pin_locked_until">Locked until %1$s</string>
+    <string name="reset_pin">Reset PIN</string>
+    <string name="reset_pin_subtitle">Forgot it? Reset with a code</string>
+    <string name="set_pin_title">Set up your wallet PIN</string>
+    <string name="set_pin_message">You'll use it to approve every payment.</string>
+
+    <string name="limits">Limits</string>
+    <string name="sent_today">Sent today</string>
+    <string name="used_of_limit">%1$s of %2$s</string>
+    <string name="resets_at">Resets at %1$s</string>
+    <string name="per_payment">Per payment</string>
+    <string name="wallet_maximum">Wallet maximum</string>
+    <string name="can_add_more">Up to %1$s more</string>
+
+    <string name="bank_accounts">Bank accounts</string>
+    <string name="primary">Primary</string>
+    <string name="link_bank_account">Link a bank account</string>
+    <string name="link_bank_subtitle">Add money and withdraw instantly</string>
+    <string name="make_primary">Make primary</string>
+    <string name="remove_account">Remove account</string>
+    <string name="remove_account_title">Remove %1$s?</string>
+    <string name="remove_account_message">You won't be able to add money from it or withdraw to it until you link it again.</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
+    <string name="holder">Account holder</string>
+    <string name="sort_code">Sort code</string>
+    <string name="account_number">Account number</string>
+
+    <string name="requests">Payment requests</string>
+    <string name="requests_summary">%1$d waiting for you · %2$d sent</string>
+    <string name="requests_none">No open requests</string>
+
+    <string name="recent_activity">Recent activity</string>
+    <string name="see_all">See all</string>
+    <string name="no_activity">No activity yet.</string>
+
+    <!-- PIN flows -->
+    <string name="pin_create_title">Create a PIN</string>
+    <string name="pin_create_subtitle">6 digits you'll use to approve payments</string>
+    <string name="pin_confirm_title">Confirm your PIN</string>
+    <string name="pin_confirm_subtitle">Enter it once more</string>
+    <string name="pin_current_title">Enter your current PIN</string>
+    <string name="pin_current_subtitle">So we know it's really you</string>
+    <string name="pin_hint">Avoid repeated or sequential digits like 111111 or 123456, and don't use your date of birth.</string>
+    <string name="pin_new_title">Choose a new PIN</string>
+    <string name="pin_mismatch">Those PINs didn't match. Try again.</string>
+    <string name="pin_weak">That PIN is too easy to guess. Avoid repeats and sequences.</string>
+    <string name="pin_set_done">Your PIN is set</string>
+    <string name="pin_changed_done">Your PIN is changed</string>
+    <string name="pin_reset_done">Your PIN is reset</string>
+    <string name="pin_done_message">You'll use it to approve every payment.</string>
+    <string name="pin_otp_title">Enter the code</string>
+    <string name="pin_otp_subtitle">We sent a 6-digit code to %1$s</string>
+    <string name="pin_otp_resend">Resend code</string>
+    <string name="pin_otp_resend_in">Resend code in %1$s</string>
+    <string name="sending_code">Sending a code…</string>
+    <string name="title_set_pin">Wallet PIN</string>
+    <string name="title_change_pin">Change PIN</string>
+    <string name="title_reset_pin">Reset PIN</string>
+
+    <!-- Link bank -->
+    <string name="link_bank_title">Link a bank account</string>
+    <string name="link_bank_header">Add your UK account</string>
+    <string name="link_bank_header_subtitle">It must be in your name. Money moves instantly.</string>
+    <string name="holder_placeholder">Alex Taylor</string>
+    <string name="sort_code_placeholder">12-34-56</string>
+    <string name="account_number_placeholder">12345678</string>
+    <string name="make_primary_label">Use as primary account</string>
+    <string name="holder_invalid">Use letters, spaces and . - ' &amp; only.</string>
+    <string name="sort_code_invalid">Sort codes are 6 digits.</string>
+    <string name="account_number_invalid">Account numbers are 8 digits.</string>
+    <string name="link_button">Link account</string>
+    <string name="linked_done">Bank account linked</string>
+
+    <!-- Add money / withdraw -->
+    <string name="add_money">Add money</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="from_bank">From %1$s</string>
+    <string name="to_bank">To %1$s</string>
+    <string name="change">Change</string>
+    <string name="can_add_up_to">You can add up to %1$s</string>
+    <string name="available_to_withdraw">%1$s available · %2$s left today</string>
+    <string name="over_limit">That's more than you can move right now</string>
+    <string name="below_minimum">The minimum is %1$s</string>
+    <string name="review">Review</string>
+    <string name="review_add_title">Add %1$s</string>
+    <string name="review_withdraw_title">Withdraw %1$s</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="your_wallet">Your MoePay wallet</string>
+    <string name="arrives">Arrives</string>
+    <string name="instantly">Instantly</string>
+    <string name="confirm">Confirm</string>
+    <string name="add_done">%1$s added</string>
+    <string name="withdraw_done">%1$s withdrawn</string>
+    <string name="add_failed">Couldn't add money</string>
+    <string name="withdraw_failed">Couldn't withdraw</string>
+    <string name="new_balance">New balance</string>
+    <string name="reference">Reference</string>
+    <string name="choose_account">Choose an account</string>
+    <string name="no_bank_title">Link a bank account first</string>
+    <string name="no_bank_message">You need a linked UK account to move money in and out.</string>
+
+    <!-- QR -->
+    <string name="qr_title">Scan to pay me</string>
+    <string name="qr_any_amount">Any amount</string>
+    <string name="qr_add_amount">Add amount</string>
+    <string name="qr_edit_amount">Edit amount</string>
+    <string name="qr_clear_amount">Clear amount</string>
+    <string name="qr_share">Share payment link</string>
+    <string name="qr_copy">Copy link</string>
+    <string name="qr_copied">Link copied</string>
+    <string name="qr_share_text">Pay me on MoePay: %1$s</string>
+    <string name="qr_set_amount">Set amount</string>
+    <string name="qr_note_placeholder">What's it for? (optional)</string>
+    <string name="qr_description">Your MoePay payment code</string>
+</resources>
