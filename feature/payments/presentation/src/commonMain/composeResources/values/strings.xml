@@ -1,0 +1,64 @@
+<resources>
+    <string name="back">Back</string>
+    <string name="send_money">Send money</string>
+    <string name="request_money">Request money</string>
+    <string name="scan">Scan</string>
+    <string name="search_placeholder">@username or mobile number</string>
+    <string name="search_hint">Find people by their MoePay username or UK mobile.</string>
+    <string name="recent">Recent</string>
+    <string name="review">Review</string>
+    <string name="balance_helper">Balance %1$s · %2$s left today</string>
+    <string name="over_balance">You don't have enough in your wallet</string>
+    <string name="over_limit">That's more than you can send right now</string>
+    <string name="below_minimum">The minimum is %1$s</string>
+    <string name="note_placeholder">Add a note (optional)</string>
+    <string name="send_to">Send %1$s</string>
+    <string name="request_from">Request %1$s</string>
+    <string name="to_person">to %1$s</string>
+    <string name="from_person">from %1$s</string>
+    <string name="send_button">Send %1$s</string>
+    <string name="request_button">Request %1$s</string>
+    <string name="sent_done">%1$s sent</string>
+    <string name="requested_done">Request sent</string>
+    <string name="requested_message">We've asked %1$s for %2$s.</string>
+    <string name="new_balance">New balance</string>
+    <string name="reference">Reference</string>
+    <string name="expires">Expires</string>
+    <string name="amount">Amount</string>
+    <string name="paying_from_qr">Amount set by %1$s</string>
+
+    <!-- Scan -->
+    <string name="scan_title">Scan a MoePay code</string>
+    <string name="scan_message">Point your camera at someone's MoePay QR, or paste their payment link.</string>
+    <string name="scan_open_camera">Open camera</string>
+    <string name="scan_unavailable">The camera scanner isn't available on this device.</string>
+    <string name="scan_paste_placeholder">moepay://pay?u=…</string>
+    <string name="scan_continue">Continue</string>
+
+    <!-- Requests -->
+    <string name="requests">Requests</string>
+    <string name="incoming">Incoming</string>
+    <string name="outgoing">Outgoing</string>
+    <string name="filter_pending">Pending</string>
+    <string name="filter_all">All</string>
+    <string name="requests_empty_title">No requests</string>
+    <string name="requests_empty_incoming">When someone asks you for money, it shows up here.</string>
+    <string name="requests_empty_outgoing">Requests you send to others show up here.</string>
+    <string name="retry">Try again</string>
+    <string name="request_detail">Request</string>
+    <string name="asked_you">%1$s asked you for</string>
+    <string name="you_asked">You asked %1$s for</string>
+    <string name="note">Note</string>
+    <string name="created">Requested</string>
+    <string name="pay_button">Pay %1$s</string>
+    <string name="decline">Decline</string>
+    <string name="cancel_request">Cancel request</string>
+    <string name="decline_title">Decline this request?</string>
+    <string name="decline_message">%1$s will see that you declined.</string>
+    <string name="cancel_title">Cancel this request?</string>
+    <string name="cancel_message">%1$s won't be able to pay it any more.</string>
+    <string name="keep">Keep</string>
+    <string name="paid_done">%1$s paid</string>
+    <string name="paid_message">to %1$s for their request</string>
+    <string name="view_transaction">View transaction</string>
+</resources>
