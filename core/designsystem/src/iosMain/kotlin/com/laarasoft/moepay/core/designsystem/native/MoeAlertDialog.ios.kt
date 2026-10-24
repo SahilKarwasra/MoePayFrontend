@@ -72,9 +72,3 @@ private fun MoeDialogButtonStyle.toUIKit(fallback: UIAlertActionStyle): UIAlertA
     MoeDialogButtonStyle.DESTRUCTIVE -> UIAlertActionStyleDestructive
 }
 
-private fun UIViewController.topMostPresented(): UIViewController {
-    var current: UIViewController = this
-    while (true) {
-        current = current.presentedViewController ?: return current
-    }
-}

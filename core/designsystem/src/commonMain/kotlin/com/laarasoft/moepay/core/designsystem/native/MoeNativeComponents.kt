@@ -1,7 +1,9 @@
 package com.laarasoft.moepay.core.designsystem.native
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.laarasoft.moepay.core.designsystem.icon.MoeIcon
 
 /*
@@ -43,7 +45,17 @@ expect fun MoeTopBar(
     actions: List<MoeBarAction> = emptyList(),
 )
 
-/** Bottom tab bar. Handles the navigation bar / home indicator inset itself. */
+/**
+ * Height of the tab bar floating over tab content (bar + home indicator). Scrollable tab
+ * content adds it to its bottom padding so the last item can scroll clear of the bar.
+ */
+val LocalBottomBarInset = compositionLocalOf { 0.dp }
+
+/**
+ * Bottom tab bar, meant to be overlaid at the bottom of the tab content. Handles the
+ * navigation bar / home indicator inset itself. On iOS it's the floating glass capsule with
+ * content showing around it; on Android an opaque Material bar.
+ */
 @Composable
 expect fun MoeNavigationBar(
     items: List<MoeNavigationItem>,

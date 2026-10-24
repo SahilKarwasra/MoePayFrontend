@@ -1,6 +1,5 @@
 package com.laarasoft.moepay.core.designsystem.native
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -37,10 +36,8 @@ import platform.darwin.NSObject
 private data class TabBarConfig(
     val items: List<MoeNavigationItem>,
     val selectedIndex: Int,
-    val background: Color,
     val selected: Color,
     val unselected: Color,
-    val border: Color,
 )
 
 /** UITabBar keeps a weak reference to its delegate, so Compose holds it. */
@@ -88,7 +85,6 @@ actual fun MoeNavigationBar(
     modifier: Modifier,
 ) {
     val colorScheme = MaterialTheme.colorScheme
-    val background = colorScheme.background
     val currentOnItemSelected by rememberUpdatedState(onItemSelected)
     val delegate = remember { TabBarDelegate() }
     delegate.onSelect = { currentOnItemSelected(it) }
@@ -97,14 +93,13 @@ actual fun MoeNavigationBar(
         TabBarConfig(
             items = items,
             selectedIndex = selectedIndex,
-            background = background,
             selected = colorScheme.onBackground,
             unselected = colorScheme.extended.textTertiary,
-            border = colorScheme.extended.border,
         )
     )
 
-    Column(modifier = modifier.fillMaxWidth().background(background)) {
+    // No background: the capsule floats over the tab content, which shows around it.
+    Column(modifier = modifier.fillMaxWidth()) {
         UIKitView(
             factory = { TabBarContainer().also { it.bar.delegate = delegate } },
             update = { container -> container.bar.apply(config) },
@@ -113,6 +108,9 @@ actual fun MoeNavigationBar(
                 .height(TAB_BAR_CONTAINER_HEIGHT),
             properties = UIKitInteropProperties(
                 isNativeAccessibilityEnabled = true,
+                // Above the Compose canvas so the transparent area around the capsule shows the
+                // content beneath, and the glass blurs it.
+                placedAsOverlay = true,
             ),
         )
         Spacer(Modifier.windowInsetsBottomHeight(WindowInsets.navigationBars))
@@ -120,11 +118,8 @@ actual fun MoeNavigationBar(
 }
 
 private fun UITabBar.apply(config: TabBarConfig) {
-    val appearance = UITabBarAppearance().apply {
-        configureWithOpaqueBackground()
-        backgroundColor = config.background.toUIColor()
-        shadowColor = config.border.toUIColor()
-    }
+    // The system's default (Liquid Glass) material; only the capsule is drawn.
+    val appearance = UITabBarAppearance().apply { configureWithDefaultBackground() }
     standardAppearance = appearance
     scrollEdgeAppearance = appearance
     tintColor = config.selected.toUIColor()
