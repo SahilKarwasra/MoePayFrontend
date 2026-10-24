@@ -58,10 +58,14 @@ class MainViewModel(
     }
 
     private fun observeSessionEnd() {
-        sessionStorage
+        val isSignedIn = sessionStorage
             .observeAuthInfo()
             .map { it != null }
             .distinctUntilChanged()
+        isSignedIn
+            .onEach { signedIn -> _state.update { it.copy(isSignedIn = signedIn) } }
+            .launchIn(viewModelScope)
+        isSignedIn
             .drop(1)
             .filter { isSignedIn -> !isSignedIn }
             .onEach { eventChannel.send(MainEvent.SessionEnded) }

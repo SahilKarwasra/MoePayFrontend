@@ -12,4 +12,6 @@ sealed interface AppStart {
 data class MainState(
     val isReady: Boolean = false,
     val start: AppStart = AppStart.Auth,
+    /** Drives the realtime connection: open only while signed in. */
+    val isSignedIn: Boolean = false,
 )
