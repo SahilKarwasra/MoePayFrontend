@@ -1,0 +1,5 @@
+<resources>
+    <string name="chat">Chat</string>
+    <string name="chat_empty_title">Chat is coming soon</string>
+    <string name="chat_empty_message">Message the people you pay, right here.</string>
+</resources>
