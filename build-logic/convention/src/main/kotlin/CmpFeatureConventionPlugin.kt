@@ -17,6 +17,7 @@ class CmpFeatureConventionPlugin : Plugin<Project> {
                 "commonMainImplementation"(project(":core:domain"))
                 "commonMainImplementation"(project(":core:presentation"))
                 "commonMainImplementation"(project(":core:designsystem"))
+                "commonMainImplementation"(project(":core:ui"))
 
                 "commonMainImplementation"(libs.library("koin-core"))
                 "commonMainImplementation"(libs.library("koin-compose"))
