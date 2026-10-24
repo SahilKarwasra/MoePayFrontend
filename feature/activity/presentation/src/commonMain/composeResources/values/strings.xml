@@ -1,0 +1,33 @@
+<resources>
+    <string name="history">History</string>
+    <string name="back">Back</string>
+    <string name="filter_all">All</string>
+    <string name="filter_in">Money in</string>
+    <string name="filter_out">Money out</string>
+    <string name="filter_failed">Failed</string>
+    <string name="empty_title">Nothing here yet</string>
+    <string name="empty_message">Your payments and bank transfers will show up here.</string>
+    <string name="empty_filtered">No transactions match this filter.</string>
+    <string name="retry">Try again</string>
+    <string name="load_error">Couldn't load your history</string>
+
+    <string name="transaction">Transaction</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_failed">Failed</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
+    <string name="note">Note</string>
+    <string name="reference">Reference</string>
+    <string name="copy_reference">Copy reference</string>
+    <string name="copied">Copied</string>
+    <string name="balance_after">Balance after</string>
+    <string name="date">Date</string>
+    <string name="completed_at">Completed</string>
+    <string name="reason">Reason</string>
+    <string name="type">Type</string>
+    <string name="type_p2p">Payment</string>
+    <string name="type_add">Added from bank</string>
+    <string name="type_withdraw">Withdrawal to bank</string>
+    <string name="type_request">Request payment</string>
+    <string name="view_request">View request</string>
+</resources>
