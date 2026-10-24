@@ -1,0 +1,30 @@
+<resources>
+    <string name="status_failed">Failed</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_paid">Paid</string>
+    <string name="status_declined">Declined</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="status_expired">Expired</string>
+    <string name="status_succeeded">Completed</string>
+
+    <string name="action_send">Send</string>
+    <string name="action_request">Request</string>
+    <string name="action_scan">Scan &amp; pay</string>
+    <string name="action_add_money">Add money</string>
+    <string name="action_withdraw">Withdraw</string>
+    <string name="action_history">History</string>
+
+    <string name="request_from">%1$s asked for</string>
+    <string name="request_to">You asked %1$s</string>
+    <string name="expires_on">Expires %1$s</string>
+
+    <string name="enter_pin">Enter your PIN</string>
+    <string name="forgot_pin">Forgot PIN?</string>
+    <string name="continue_button">Continue</string>
+    <string name="done">Done</string>
+    <string name="try_again">Try again</string>
+    <string name="delete">Delete</string>
+    <string name="pin_locked_title">PIN locked</string>
+    <string name="reset_pin">Reset PIN</string>
+    <string name="not_now">Not now</string>
+</resources>
