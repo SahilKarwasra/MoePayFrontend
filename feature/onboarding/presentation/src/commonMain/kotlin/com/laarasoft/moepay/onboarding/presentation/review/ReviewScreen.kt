@@ -195,10 +195,10 @@ private fun ReviewScreenPreview() {
         ReviewScreen(
             state = ReviewState(
                 isLoading = false,
-                fullName = "Aarav Sharma",
-                initials = "AS",
-                username = "aarav",
-                phoneNumber = "+919876543210",
+                fullName = "Alex Taylor",
+                initials = "AT",
+                username = "alex",
+                phoneNumber = "+447911123456",
             ),
             canGoBack = true,
             onAction = {},
