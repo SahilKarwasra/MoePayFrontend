@@ -1,17 +1,30 @@
 <resources>
-    <string name="tab_home">Home</string>
-    <string name="tab_activity">Activity</string>
-    <string name="tab_profile">Profile</string>
+    <string name="greeting_morning">Good morning</string>
+    <string name="greeting_afternoon">Good afternoon</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="balance">Balance</string>
+    <string name="toggle_balance">Show or hide balance</string>
 
-    <string name="home_empty_title">Nothing here yet</string>
-    <string name="home_empty_message">Your balance and quick actions will show up here.</string>
-    <string name="activity_empty_title">No activity yet</string>
-    <string name="activity_empty_message">Payments you send and receive will appear here.</string>
-    <string name="profile_empty_title">Your profile</string>
-    <string name="profile_empty_message">Account settings are coming soon.</string>
+    <string name="set_pin_title">Set up your wallet PIN</string>
+    <string name="set_pin_message">You'll use it to approve every payment.</string>
+    <string name="requests_title_one">1 person is waiting for you</string>
+    <string name="requests_title_many">%1$d people are waiting for you</string>
+    <string name="requests_message">Review payment requests</string>
+    <string name="wallet_setting_up_title">Your wallet is being set up</string>
+    <string name="wallet_setting_up_message">Pull down to refresh in a moment.</string>
 
-    <string name="logout">Log out</string>
-    <string name="logout_dialog_title">Log out of MoePay?</string>
-    <string name="logout_dialog_message">You'll need your mobile number and a one-time code to sign back in.</string>
-    <string name="cancel">Cancel</string>
+    <string name="people">People</string>
+    <string name="recent_activity">Recent activity</string>
+    <string name="see_all">See all</string>
+    <string name="no_activity">No activity yet. Add money to get started.</string>
+
+    <string name="load_error_title">Couldn't load your home</string>
+    <string name="retry">Try again</string>
+
+    <string name="blocker_wallet_frozen_title">Wallet frozen</string>
+    <string name="blocker_wallet_frozen_message">Your wallet is frozen, so payments are paused. Contact support for help.</string>
+    <string name="blocker_not_ready_title">Wallet not ready</string>
+    <string name="blocker_not_ready_message">Finish setting up your account to use your wallet.</string>
+    <string name="ok">OK</string>
+
 </resources>
