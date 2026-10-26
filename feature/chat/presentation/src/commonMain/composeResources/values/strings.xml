@@ -1,5 +1,88 @@
 <resources>
     <string name="chat">Chat</string>
-    <string name="chat_empty_title">Chat is coming soon</string>
-    <string name="chat_empty_message">Message the people you pay, right here.</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_message">New message</string>
+    <string name="search_chats">Search</string>
+    <string name="chat_empty_title">No chats yet</string>
+    <string name="chat_empty_message">Message the people you pay and request money right inside the chat.</string>
+    <string name="start_a_chat">Start a chat</string>
+    <string name="no_results">No chats match "%1$s"</string>
+
+    <!-- Previews -->
+    <string name="preview_you">You: %1$s</string>
+    <string name="preview_deleted">Message deleted</string>
+    <string name="preview_payment_sent">You paid %1$s</string>
+    <string name="preview_payment_received">Paid you %1$s</string>
+    <string name="preview_request_sent">You requested %1$s</string>
+    <string name="preview_request_received">Requested %1$s</string>
+    <string name="preview_failed">Not delivered</string>
+    <string name="preview_draft">Draft: %1$s</string>
+    <string name="typing">typing…</string>
+
+    <!-- Conversation -->
+    <string name="status_online_username">@%1$s</string>
+    <string name="status_waiting_network">Waiting for network…</string>
+    <string name="status_connecting">Connecting…</string>
+    <string name="message_placeholder">Message</string>
+    <string name="send">Send</string>
+    <string name="attach_money">Money</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="unread_divider">Unread messages</string>
+    <string name="edited">edited</string>
+    <string name="message_deleted_mine">You deleted this message</string>
+    <string name="message_deleted_theirs">This message was deleted</string>
+    <string name="original_message">Original message</string>
+    <string name="you">You</string>
+    <string name="replying_to">Replying to %1$s</string>
+    <string name="editing_message">Editing message</string>
+    <string name="not_delivered_tap">Not delivered · Tap to retry</string>
+    <string name="say_hi">Say hi to %1$s</string>
+    <string name="say_hi_message">Messages, payments and requests between you two appear here.</string>
+    <string name="load_earlier">Loading earlier messages…</string>
+    <string name="jump_to_latest">Jump to latest</string>
+
+    <!-- Actions -->
+    <string name="action_reply">Reply</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete for everyone</string>
+    <string name="action_retry">Try again</string>
+    <string name="action_discard">Delete</string>
+    <string name="action_send_money">Send money</string>
+    <string name="action_request_money">Request money</string>
+    <string name="action_view_details">View details</string>
+    <string name="copied">Copied</string>
+    <string name="delete_title">Delete this message?</string>
+    <string name="delete_message">It will be deleted for everyone in this chat.</string>
+    <string name="delete">Delete</string>
+
+    <!-- Money in chat -->
+    <string name="payment_you_paid">You paid</string>
+    <string name="payment_paid_you">Paid you</string>
+    <string name="payment_failed">Payment failed</string>
+    <string name="request_you_requested">You requested</string>
+    <string name="request_requested_from_you">Requested from you</string>
+    <string name="request_sending">Sending request…</string>
+    <string name="pay">Pay</string>
+    <string name="decline">Decline</string>
+    <string name="send_money_to">Send to %1$s</string>
+    <string name="request_money_from">Request from %1$s</string>
+    <string name="continue_label">Continue</string>
+    <string name="review_send">Send %1$s</string>
+    <string name="review_request">Request %1$s</string>
+    <string name="to_name">to %1$s</string>
+    <string name="from_name">from %1$s</string>
+    <string name="add_note">Add a note (optional)</string>
+    <string name="pin_subtitle_send">Send %1$s to %2$s</string>
+    <string name="money_offline">Connect to the internet to send money.</string>
+    <string name="max_amount">Up to %1$s</string>
+
+    <!-- New chat -->
+    <string name="new_chat_placeholder">Name, @username or mobile number</string>
+    <string name="new_chat_hint">Enter a @username or UK mobile number.</string>
+    <string name="new_chat_recent">Recent</string>
+    <string name="start_chat_with">Start a chat with %1$s</string>
+    <string name="new_chat_offline">You're offline. Connect to start a new chat.</string>
 </resources>
