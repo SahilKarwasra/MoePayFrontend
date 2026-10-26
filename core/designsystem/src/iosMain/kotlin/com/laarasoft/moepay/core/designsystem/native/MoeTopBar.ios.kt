@@ -23,7 +23,17 @@ import kotlinx.cinterop.ExportObjCClass
 import kotlinx.cinterop.useContents
 import platform.CoreGraphics.CGRectMake
 import platform.UIKit.NSForegroundColorAttributeName
+import platform.Foundation.NSSelectorFromString
+import platform.UIKit.NSTextAlignmentCenter
 import platform.UIKit.UIAction
+import platform.UIKit.UIColor
+import platform.UIKit.UIFont
+import platform.UIKit.UIFontTextStyleCaption1
+import platform.UIKit.UIFontTextStyleHeadline
+import platform.UIKit.UILabel
+import platform.UIKit.UILayoutConstraintAxisVertical
+import platform.UIKit.UIStackView
+import platform.UIKit.UIStackViewAlignmentCenter
 import platform.UIKit.UIBarButtonItem
 import platform.UIKit.UIImage
 import platform.UIKit.UINavigationBar
@@ -44,6 +54,7 @@ private val NAVIGATION_BAR_CONTAINER_HEIGHT = (BAR_TOP_GAP + BAR_HEIGHT + BAR_BO
 
 private data class TopBarConfig(
     val title: String,
+    val subtitle: String?,
     val background: Color,
     val foreground: Color,
     val navigationAction: MoeBarAction?,
@@ -76,11 +87,13 @@ actual fun MoeTopBar(
     modifier: Modifier,
     navigationAction: MoeBarAction?,
     actions: List<MoeBarAction>,
+    subtitle: String?,
 ) {
     val background = MaterialTheme.colorScheme.background
     val config by rememberUpdatedState(
         TopBarConfig(
             title = title,
+            subtitle = subtitle,
             background = background,
             foreground = MaterialTheme.colorScheme.onBackground,
             navigationAction = navigationAction,
@@ -107,6 +120,7 @@ actual fun MoeTopBar(
     }
 }
 
+@OptIn(ExperimentalForeignApi::class)
 private fun UINavigationBar.apply(config: TopBarConfig) {
     val foreground = config.foreground.toUIColor()
     val appearance = UINavigationBarAppearance().apply {
@@ -121,9 +135,37 @@ private fun UINavigationBar.apply(config: TopBarConfig) {
     tintColor = foreground
 
     val item = UINavigationItem(title = config.title)
+    if (config.subtitle != null) {
+        if (item.respondsToSelector(NSSelectorFromString("setSubtitle:"))) {
+            // iOS 26: the system's own two-line title.
+            item.subtitle = config.subtitle
+        } else {
+            item.titleView = twoLineTitle(config.title, config.subtitle, foreground, config.foreground.copy(alpha = 0.6f).toUIColor())
+        }
+    }
     item.leftBarButtonItem = config.navigationAction?.toBarButtonItem()
     item.rightBarButtonItems = config.actions.map { it.toBarButtonItem() }
     setItems(listOf(item), animated = false)
+}
+
+/** Pre-iOS 26 stand-in for the native subtitle, in the system's own fonts. */
+private fun twoLineTitle(title: String, subtitle: String, titleColor: UIColor, subtitleColor: UIColor): UIView {
+    val titleLabel = UILabel().apply {
+        text = title
+        font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+        textColor = titleColor
+        textAlignment = NSTextAlignmentCenter
+    }
+    val subtitleLabel = UILabel().apply {
+        text = subtitle
+        font = UIFont.preferredFontForTextStyle(UIFontTextStyleCaption1)
+        textColor = subtitleColor
+        textAlignment = NSTextAlignmentCenter
+    }
+    return UIStackView(arrangedSubviews = listOf(titleLabel, subtitleLabel)).apply {
+        axis = UILayoutConstraintAxisVertical
+        alignment = UIStackViewAlignmentCenter
+    }
 }
 
 private fun MoeBarAction.toBarButtonItem(): UIBarButtonItem {

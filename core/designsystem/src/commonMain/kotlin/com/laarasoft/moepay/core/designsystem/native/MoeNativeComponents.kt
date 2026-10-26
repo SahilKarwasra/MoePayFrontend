@@ -22,6 +22,8 @@ data class MoeNavigationItem(
     val label: String,
     val icon: MoeIcon,
     val selectedIcon: MoeIcon = icon,
+    /** Shown as a native badge (e.g. unread count); 0 hides it. */
+    val badgeCount: Int = 0,
 )
 
 enum class MoeDialogButtonStyle {
@@ -36,13 +38,17 @@ data class MoeDialogButton(
     val style: MoeDialogButtonStyle = MoeDialogButtonStyle.DEFAULT,
 )
 
-/** Top app bar. Handles the status bar inset itself. */
+/**
+ * Top app bar. Handles the status bar inset itself. [subtitle] shows under the title
+ * (iOS 26's native navigation subtitle; a second line on Android).
+ */
 @Composable
 expect fun MoeTopBar(
     title: String,
     modifier: Modifier = Modifier,
     navigationAction: MoeBarAction? = null,
     actions: List<MoeBarAction> = emptyList(),
+    subtitle: String? = null,
 )
 
 /**
@@ -62,6 +68,25 @@ expect fun MoeNavigationBar(
     selectedIndex: Int,
     onItemSelected: (Int) -> Unit,
     modifier: Modifier = Modifier,
+)
+
+data class MoeSheetAction(
+    val title: String,
+    val onClick: () -> Unit,
+    val style: MoeDialogButtonStyle = MoeDialogButtonStyle.DEFAULT,
+)
+
+/**
+ * A list of actions, e.g. a message's long-press menu: a native `UIAlertController` action
+ * sheet on iOS, a Material bottom sheet on Android. Shown while in composition; a Cancel
+ * button is added for you.
+ */
+@Composable
+expect fun MoeActionSheet(
+    actions: List<MoeSheetAction>,
+    cancelLabel: String,
+    onDismissRequest: () -> Unit,
+    title: String? = null,
 )
 
 /** Shown while in composition; remove it from composition to dismiss. */

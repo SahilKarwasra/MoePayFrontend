@@ -138,5 +138,14 @@ private fun UITabBar.apply(config: TabBarConfig) {
         setItems(tabItems, animated = false)
     }
     val tabItems = items?.map { it as UITabBarItem }.orEmpty()
+    tabItems.forEachIndexed { index, tabItem ->
+        val count = config.items.getOrNull(index)?.badgeCount ?: 0
+        val badge = when {
+            count <= 0 -> null
+            count > 99 -> "99+"
+            else -> count.toString()
+        }
+        if (tabItem.badgeValue != badge) tabItem.badgeValue = badge
+    }
     selectedItem = tabItems.getOrNull(config.selectedIndex)
 }

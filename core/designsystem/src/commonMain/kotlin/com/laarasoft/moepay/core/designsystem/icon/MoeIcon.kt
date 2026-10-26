@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import com.laarasoft.moepay.core.designsystem.resources.Res
 import com.laarasoft.moepay.core.designsystem.resources.ic_activity
 import com.laarasoft.moepay.core.designsystem.resources.ic_add
+import com.laarasoft.moepay.core.designsystem.resources.ic_arrow_up
 import com.laarasoft.moepay.core.designsystem.resources.ic_back
 import com.laarasoft.moepay.core.designsystem.resources.ic_backspace
 import com.laarasoft.moepay.core.designsystem.resources.ic_bank
@@ -13,9 +14,11 @@ import com.laarasoft.moepay.core.designsystem.resources.ic_check
 import com.laarasoft.moepay.core.designsystem.resources.ic_check_circle
 import com.laarasoft.moepay.core.designsystem.resources.ic_chevron_right
 import com.laarasoft.moepay.core.designsystem.resources.ic_close
+import com.laarasoft.moepay.core.designsystem.resources.ic_clock
 import com.laarasoft.moepay.core.designsystem.resources.ic_close_circle
 import com.laarasoft.moepay.core.designsystem.resources.ic_copy
 import com.laarasoft.moepay.core.designsystem.resources.ic_delete
+import com.laarasoft.moepay.core.designsystem.resources.ic_edit
 import com.laarasoft.moepay.core.designsystem.resources.ic_error
 import com.laarasoft.moepay.core.designsystem.resources.ic_eye
 import com.laarasoft.moepay.core.designsystem.resources.ic_eye_off
@@ -27,6 +30,7 @@ import com.laarasoft.moepay.core.designsystem.resources.ic_logout
 import com.laarasoft.moepay.core.designsystem.resources.ic_pending
 import com.laarasoft.moepay.core.designsystem.resources.ic_profile
 import com.laarasoft.moepay.core.designsystem.resources.ic_qr
+import com.laarasoft.moepay.core.designsystem.resources.ic_reply
 import com.laarasoft.moepay.core.designsystem.resources.ic_request
 import com.laarasoft.moepay.core.designsystem.resources.ic_scan
 import com.laarasoft.moepay.core.designsystem.resources.ic_search
@@ -78,6 +82,11 @@ enum class MoeIcon(
     Backspace(Res.drawable.ic_backspace, "delete.left"),
     Error(Res.drawable.ic_error, "exclamationmark.circle"),
     Info(Res.drawable.ic_info, "info.circle"),
+    Compose(Res.drawable.ic_edit, "square.and.pencil"),
+    Edit(Res.drawable.ic_edit, "pencil"),
+    Reply(Res.drawable.ic_reply, "arrowshape.turn.up.left"),
+    ArrowUp(Res.drawable.ic_arrow_up, "arrow.up"),
+    Clock(Res.drawable.ic_clock, "clock"),
     Delete(Res.drawable.ic_delete, "trash"),
     Pending(Res.drawable.ic_pending, "hourglass"),
 }
