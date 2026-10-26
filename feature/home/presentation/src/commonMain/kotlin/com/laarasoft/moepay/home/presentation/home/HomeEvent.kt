@@ -15,6 +15,7 @@ sealed interface HomeDestination {
     data object SetPin : HomeDestination
     data object LinkBank : HomeDestination
     data object Profile : HomeDestination
+    data class Message(val userId: String) : HomeDestination
 }
 
 sealed interface HomeEvent {

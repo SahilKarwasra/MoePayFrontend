@@ -8,6 +8,9 @@ sealed interface HomeAction {
     data object OnToggleBalance : HomeAction
     data class OnQuickActionClick(val action: WalletAction) : HomeAction
     data class OnRecipientClick(val recipient: Recipient) : HomeAction
+    data class OnSendToRecipient(val recipient: Recipient) : HomeAction
+    data class OnMessageRecipient(val recipient: Recipient) : HomeAction
+    data object OnDismissPersonMenu : HomeAction
     data class OnTransactionClick(val transactionId: String) : HomeAction
     data object OnSeeAllActivityClick : HomeAction
     data object OnRequestsClick : HomeAction

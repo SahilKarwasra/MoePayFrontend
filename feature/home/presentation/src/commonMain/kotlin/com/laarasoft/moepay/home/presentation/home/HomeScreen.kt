@@ -48,7 +48,9 @@ import com.laarasoft.moepay.core.designsystem.components.MoeSkeletonRows
 import com.laarasoft.moepay.core.designsystem.icon.MoeIcon
 import com.laarasoft.moepay.core.designsystem.native.LocalBottomBarInset
 import com.laarasoft.moepay.core.designsystem.motion.fadeUpOnAppear
+import com.laarasoft.moepay.core.designsystem.native.MoeActionSheet
 import com.laarasoft.moepay.core.designsystem.native.MoeAlertDialog
+import com.laarasoft.moepay.core.designsystem.native.MoeSheetAction
 import com.laarasoft.moepay.core.designsystem.native.MoeDialogButton
 import com.laarasoft.moepay.core.designsystem.theme.MoeTheme
 import com.laarasoft.moepay.core.designsystem.theme.extended
@@ -61,6 +63,9 @@ import com.laarasoft.moepay.core.ui.label
 import com.laarasoft.moepay.home.presentation.resources.Res
 import com.laarasoft.moepay.home.presentation.resources.balance
 import com.laarasoft.moepay.home.presentation.resources.blocker_not_ready_message
+import com.laarasoft.moepay.home.presentation.resources.person_cancel
+import com.laarasoft.moepay.home.presentation.resources.person_message
+import com.laarasoft.moepay.home.presentation.resources.person_send_money
 import com.laarasoft.moepay.home.presentation.resources.blocker_not_ready_title
 import com.laarasoft.moepay.home.presentation.resources.blocker_wallet_frozen_message
 import com.laarasoft.moepay.home.presentation.resources.blocker_wallet_frozen_title
@@ -279,6 +284,18 @@ fun HomeScreen(
         }
     }
 
+
+    state.personMenuFor?.let { person ->
+        MoeActionSheet(
+            title = person.displayName,
+            actions = listOf(
+                MoeSheetAction(stringResource(Res.string.person_send_money), { onAction(HomeAction.OnSendToRecipient(person)) }),
+                MoeSheetAction(stringResource(Res.string.person_message), { onAction(HomeAction.OnMessageRecipient(person)) }),
+            ),
+            cancelLabel = stringResource(Res.string.person_cancel),
+            onDismissRequest = { onAction(HomeAction.OnDismissPersonMenu) },
+        )
+    }
 
     state.blocker?.let { blocker ->
         val (title, message) = when (blocker) {

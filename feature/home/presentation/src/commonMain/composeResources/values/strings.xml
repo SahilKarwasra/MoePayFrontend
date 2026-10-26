@@ -27,4 +27,7 @@
     <string name="blocker_not_ready_message">Finish setting up your account to use your wallet.</string>
     <string name="ok">OK</string>
 
+    <string name="person_send_money">Send money</string>
+    <string name="person_message">Message</string>
+    <string name="person_cancel">Cancel</string>
 </resources>

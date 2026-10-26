@@ -57,7 +57,16 @@ class HomeViewModel(
                 appPreferences.setBalanceHidden(!appPreferences.observeBalanceHidden().first())
             }
             is HomeAction.OnQuickActionClick -> onQuickAction(action.action)
-            is HomeAction.OnRecipientClick -> navigate(HomeDestination.Send(action.recipient))
+            is HomeAction.OnRecipientClick -> _state.update { it.copy(personMenuFor = action.recipient) }
+            is HomeAction.OnSendToRecipient -> {
+                _state.update { it.copy(personMenuFor = null) }
+                navigate(HomeDestination.Send(action.recipient))
+            }
+            is HomeAction.OnMessageRecipient -> {
+                _state.update { it.copy(personMenuFor = null) }
+                navigate(HomeDestination.Message(action.recipient.userId))
+            }
+            HomeAction.OnDismissPersonMenu -> _state.update { it.copy(personMenuFor = null) }
             is HomeAction.OnTransactionClick -> navigate(HomeDestination.Transaction(action.transactionId))
             HomeAction.OnSeeAllActivityClick -> navigate(HomeDestination.History)
             HomeAction.OnRequestsClick -> navigate(HomeDestination.Requests)
