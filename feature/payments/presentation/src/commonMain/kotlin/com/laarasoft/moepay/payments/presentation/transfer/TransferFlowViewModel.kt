@@ -15,7 +15,7 @@ import com.laarasoft.moepay.core.domain.wallet.WalletRepository
 import com.laarasoft.moepay.core.presentation.money.AmountInput
 import com.laarasoft.moepay.core.presentation.util.toUiText
 import com.laarasoft.moepay.payments.domain.PaymentsService
-import com.laarasoft.moepay.payments.domain.RecipientQuery
+import com.laarasoft.moepay.core.domain.money.RecipientQuery
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
