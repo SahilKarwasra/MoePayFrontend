@@ -22,6 +22,8 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.compose.compiler.gradlePlugin)
     compileOnly(libs.compose.gradlePlugin)
+    compileOnly(libs.ksp.gradlePlugin)
+    compileOnly(libs.room.gradlePlugin)
 }
 
 tasks {
@@ -52,6 +54,10 @@ gradlePlugin {
         register("cmpApplication") {
             id = "com.laarasoft.moepay.convention.cmp.application"
             implementationClass = "CmpApplicationConventionPlugin"
+        }
+        register("room") {
+            id = "com.laarasoft.moepay.convention.room"
+            implementationClass = "RoomConventionPlugin"
         }
         register("appConfig") {
             id = "com.laarasoft.moepay.convention.app.config"

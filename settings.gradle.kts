@@ -61,4 +61,7 @@ include(":feature:activity:domain")
 include(":feature:activity:data")
 include(":feature:activity:presentation")
 
+include(":feature:chat:domain")
+include(":feature:chat:data")
+include(":feature:chat:database")
 include(":feature:chat:presentation")

@@ -15,6 +15,9 @@ androidx-activity = "1.13.0"
 androidx-core = "1.19.1"
 androidx-core-splashscreen = "1.2.0"
 androidx-datastore = "1.3.0"
+room = "2.8.5"
+sqlite = "2.7.1"
+ksp = "2.3.12"
 
 # Kotlinx
 kotlinx-coroutines = "1.11.0"
@@ -51,6 +54,9 @@ androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splashscreen" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidx-datastore" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 # Compose
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "composeMultiplatform" }
@@ -92,6 +98,8 @@ android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref 
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 compose-compiler-gradlePlugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 compose-gradlePlugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeMultiplatform" }
+ksp-gradlePlugin = { module = "com.google.devtools.ksp:symbol-processing-gradle-plugin", version.ref = "ksp" }
+room-gradlePlugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
 
 [plugins]
 # Convention plugins (build-logic)
@@ -101,6 +109,7 @@ convention-cmp-library = { id = "com.laarasoft.moepay.convention.cmp.library", v
 convention-cmp-feature = { id = "com.laarasoft.moepay.convention.cmp.feature", version = "unspecified" }
 convention-cmp-application = { id = "com.laarasoft.moepay.convention.cmp.application", version = "unspecified" }
 convention-app-config = { id = "com.laarasoft.moepay.convention.app.config", version = "unspecified" }
+convention-room = { id = "com.laarasoft.moepay.convention.room", version = "unspecified" }
 
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
@@ -108,6 +117,8 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+androidxRoom = { id = "androidx.room", version.ref = "room" }
 
 [bundles]
 koin-compose = [
