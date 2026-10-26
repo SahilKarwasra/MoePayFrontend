@@ -51,6 +51,12 @@
     <string name="error_request_not_pending">This request has already been dealt with.</string>
     <string name="error_transaction_not_found">We couldn't find that transaction.</string>
     <string name="error_money_request_not_found">We couldn't find that request.</string>
+    <string name="error_conversation_not_found">We couldn't find that chat.</string>
+    <string name="error_message_not_found">That message no longer exists.</string>
+    <string name="error_message_invalid">That message can't be sent. Check its length and try again.</string>
+    <string name="error_message_not_editable">This message can no longer be changed.</string>
+    <string name="error_message_version_conflict">This message was changed on another device.</string>
+    <string name="error_client_message_id_reused">That message couldn't be sent. Try again.</string>
     <string name="error_pin_invalid_attempts">That PIN isn't right. %1$d attempts left.</string>
     <string name="error_pin_invalid_last_attempt">That PIN isn't right. 1 attempt left before your PIN locks.</string>
     <string name="error_pin_locked_until">Too many wrong attempts. Try again at %1$s or reset your PIN.</string>

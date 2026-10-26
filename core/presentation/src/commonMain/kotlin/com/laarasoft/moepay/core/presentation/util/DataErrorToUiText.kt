@@ -10,6 +10,12 @@ import com.laarasoft.moepay.core.presentation.resources.error_cannot_pay_self
 import com.laarasoft.moepay.core.presentation.resources.error_idempotency
 import com.laarasoft.moepay.core.presentation.resources.error_insufficient_balance
 import com.laarasoft.moepay.core.presentation.resources.error_limit_exceeded
+import com.laarasoft.moepay.core.presentation.resources.error_client_message_id_reused
+import com.laarasoft.moepay.core.presentation.resources.error_conversation_not_found
+import com.laarasoft.moepay.core.presentation.resources.error_message_invalid
+import com.laarasoft.moepay.core.presentation.resources.error_message_not_editable
+import com.laarasoft.moepay.core.presentation.resources.error_message_not_found
+import com.laarasoft.moepay.core.presentation.resources.error_message_version_conflict
 import com.laarasoft.moepay.core.presentation.resources.error_money_request_not_found
 import com.laarasoft.moepay.core.presentation.resources.error_payment_in_progress
 import com.laarasoft.moepay.core.presentation.resources.error_pin_already_set
@@ -110,6 +116,12 @@ fun DataError.toUiText(): UiText {
         DataError.Remote.REQUEST_NOT_PENDING -> Res.string.error_request_not_pending
         DataError.Remote.TRANSACTION_NOT_FOUND -> Res.string.error_transaction_not_found
         DataError.Remote.MONEY_REQUEST_NOT_FOUND -> Res.string.error_money_request_not_found
+        DataError.Remote.CONVERSATION_NOT_FOUND -> Res.string.error_conversation_not_found
+        DataError.Remote.MESSAGE_NOT_FOUND -> Res.string.error_message_not_found
+        DataError.Remote.MESSAGE_INVALID -> Res.string.error_message_invalid
+        DataError.Remote.MESSAGE_NOT_EDITABLE -> Res.string.error_message_not_editable
+        DataError.Remote.MESSAGE_VERSION_CONFLICT -> Res.string.error_message_version_conflict
+        DataError.Remote.CLIENT_MESSAGE_ID_REUSED -> Res.string.error_client_message_id_reused
     }
     return UiText.Resource(resource)
 }
