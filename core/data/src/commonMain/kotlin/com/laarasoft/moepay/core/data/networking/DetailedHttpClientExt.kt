@@ -5,7 +5,10 @@ import com.laarasoft.moepay.core.domain.util.Result
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.request.delete
+import io.ktor.client.request.get
 import io.ktor.client.request.parameter
+import io.ktor.client.request.patch
 import io.ktor.client.request.post
 import io.ktor.client.request.put
 import io.ktor.client.request.setBody
@@ -41,6 +44,40 @@ suspend inline fun <reified Request, reified Response : Any> HttpClient.putDetai
     put {
         url(constructRoute(route))
         setBody(body)
+        builder()
+    }
+}
+
+suspend inline fun <reified Request, reified Response : Any> HttpClient.patchDetailed(
+    route: String,
+    body: Request,
+    crossinline builder: HttpRequestBuilder.() -> Unit = {},
+): Result<Response, ApiFailure> = safeCallDetailed {
+    patch {
+        url(constructRoute(route))
+        setBody(body)
+        builder()
+    }
+}
+
+suspend inline fun <reified Response : Any> HttpClient.getDetailed(
+    route: String,
+    queryParams: Map<String, Any> = mapOf(),
+    crossinline builder: HttpRequestBuilder.() -> Unit = {},
+): Result<Response, ApiFailure> = safeCallDetailed {
+    get {
+        url(constructRoute(route))
+        queryParams.forEach { (key, value) -> parameter(key, value) }
+        builder()
+    }
+}
+
+suspend inline fun <reified Response : Any> HttpClient.deleteDetailed(
+    route: String,
+    crossinline builder: HttpRequestBuilder.() -> Unit = {},
+): Result<Response, ApiFailure> = safeCallDetailed {
+    delete {
+        url(constructRoute(route))
         builder()
     }
 }

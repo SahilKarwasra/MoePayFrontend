@@ -1,5 +1,7 @@
 package com.laarasoft.moepay.core.data.di
 
+import com.laarasoft.moepay.core.data.connectivity.AndroidConnectivityObserver
+import com.laarasoft.moepay.core.domain.connectivity.ConnectivityObserver
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import com.laarasoft.moepay.core.data.datastore.createDataStore
@@ -13,5 +15,6 @@ import org.koin.dsl.module
 internal actual val platformCoreDataModule = module {
     single<HttpClientEngine> { OkHttp.create() }
     single<DataStore<Preferences>> { createDataStore(androidContext()) }
+    single<ConnectivityObserver> { AndroidConnectivityObserver(androidContext()) }
     single<SecureStore> { PlatformSecureStore(get()) }
 }

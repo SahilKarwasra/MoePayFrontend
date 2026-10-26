@@ -7,9 +7,11 @@ import com.laarasoft.moepay.core.data.money.MoneyRequestDto
 import com.laarasoft.moepay.core.data.money.toDomain
 import com.laarasoft.moepay.core.data.networking.UrlConstants
 import com.laarasoft.moepay.core.domain.auth.SessionStorage
+import com.laarasoft.moepay.core.domain.realtime.RealtimeConnection
 import com.laarasoft.moepay.core.domain.realtime.RealtimeEvent
 import com.laarasoft.moepay.core.domain.realtime.RealtimeEvents
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.websocket.DefaultClientWebSocketSession
 import io.ktor.client.plugins.websocket.webSocket
 import io.ktor.websocket.Frame
 import io.ktor.websocket.readText
@@ -18,8 +20,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -46,25 +51,49 @@ class KtorRealtimeClient(
     private val _events = MutableSharedFlow<RealtimeEvent>(extraBufferCapacity = 64)
     override val events: SharedFlow<RealtimeEvent> = _events.asSharedFlow()
 
-    private var connection: Job? = null
+    private val _connection = MutableStateFlow(RealtimeConnection.DISCONNECTED)
+    override val connection: StateFlow<RealtimeConnection> = _connection.asStateFlow()
+
+    private var connectionJob: Job? = null
+    private var session: DefaultClientWebSocketSession? = null
 
     override fun start() {
-        if (connection?.isActive == true) return
-        connection = applicationScope.launch { connectLoop() }
+        if (connectionJob?.isActive == true) return
+        connectionJob = applicationScope.launch {
+            try {
+                connectLoop()
+            } finally {
+                session = null
+                _connection.value = RealtimeConnection.DISCONNECTED
+            }
+        }
     }
 
     override fun stop() {
-        connection?.cancel()
-        connection = null
+        connectionJob?.cancel()
+        connectionJob = null
+    }
+
+    override fun send(type: String, dataJson: String): Boolean {
+        val current = session ?: return false
+        if (_connection.value != RealtimeConnection.CONNECTED) return false
+        applicationScope.launch {
+            runCatching { current.send(Frame.Text("""{"type":${json.encodeToString(type)},"data":$dataJson}""")) }
+                .onFailure { logger.d { "send failed: ${it.message}" } }
+        }
+        return true
     }
 
     private suspend fun connectLoop() {
         var attempt = 0
         while (currentCoroutineContext().isActive) {
             var revoked = false
+            _connection.value = RealtimeConnection.CONNECTING
             try {
                 httpClient.webSocket(urlString = webSocketUrl()) {
                     attempt = 0
+                    session = this
+                    _connection.value = RealtimeConnection.CONNECTED
                     logger.d { "connected" }
                     for (frame in incoming) {
                         if (frame is Frame.Text) handle(frame.readText())
@@ -75,6 +104,9 @@ class KtorRealtimeClient(
                 throw e
             } catch (e: Exception) {
                 logger.d { "socket failed: ${e.message}" }
+            } finally {
+                session = null
+                _connection.value = RealtimeConnection.DISCONNECTED
             }
             if (revoked) {
                 // Signed out on another device or the server revoked the session.
@@ -92,11 +124,12 @@ class KtorRealtimeClient(
         val data = envelope["data"] as? JsonObject ?: return
         val event = runCatching {
             when (type) {
+                "connected" -> null
                 "wallet.credited" -> RealtimeEvent.WalletCredited(json.decodeFromJsonElement(MoneyMovementDto.serializer(), data).toDomain())
                 "wallet.debited" -> RealtimeEvent.WalletDebited(json.decodeFromJsonElement(MoneyMovementDto.serializer(), data).toDomain())
                 "money_request.received" -> RealtimeEvent.MoneyRequestReceived(json.decodeFromJsonElement(MoneyRequestDto.serializer(), data).toDomain())
                 "money_request.updated" -> RealtimeEvent.MoneyRequestUpdated(json.decodeFromJsonElement(MoneyRequestDto.serializer(), data).toDomain())
-                else -> null
+                else -> RealtimeEvent.Other(type, data.toString())
             }
         }.onFailure { logger.w { "bad $type event: ${it.message}" } }.getOrNull() ?: return
         _events.tryEmit(event)
