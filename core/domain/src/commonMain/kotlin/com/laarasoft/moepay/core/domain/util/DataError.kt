@@ -62,6 +62,14 @@ sealed interface DataError : Error {
         REQUEST_NOT_PENDING,
         TRANSACTION_NOT_FOUND,
         MONEY_REQUEST_NOT_FOUND,
+
+        // Chat codes
+        CONVERSATION_NOT_FOUND,
+        MESSAGE_NOT_FOUND,
+        MESSAGE_INVALID,
+        MESSAGE_NOT_EDITABLE,
+        MESSAGE_VERSION_CONFLICT,
+        CLIENT_MESSAGE_ID_REUSED,
     }
 
     enum class Local : DataError {

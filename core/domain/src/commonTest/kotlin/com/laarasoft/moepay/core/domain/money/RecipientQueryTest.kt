@@ -1,6 +1,5 @@
-package com.laarasoft.moepay.payments.domain
+package com.laarasoft.moepay.core.domain.money
 
-import com.laarasoft.moepay.core.domain.money.RecipientRef
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

@@ -1,6 +1,5 @@
-package com.laarasoft.moepay.payments.domain
+package com.laarasoft.moepay.core.domain.money
 
-import com.laarasoft.moepay.core.domain.money.RecipientRef
 
 /**
  * Turns what was typed in the "who" field into a lookup: a UK mobile ("07911 123456",
