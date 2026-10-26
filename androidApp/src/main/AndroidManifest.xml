@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".MoePayApplication"
@@ -23,7 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- "Pay me" links produced by GET /wallet/qr: moepay://pay?u=alex&a=500 -->
+            <!-- "Pay me" links produced by GET /wallet/qr (moepay://pay?u=alex&a=500)
+                 and chat links (moepay://chat?u=alex) -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -31,6 +33,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="moepay" android:host="pay" />
+                <data android:scheme="moepay" android:host="chat" />
             </intent-filter>
         </activity>
     </application>

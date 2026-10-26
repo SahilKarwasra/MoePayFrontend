@@ -20,6 +20,8 @@ import com.laarasoft.moepay.activity.presentation.navigation.ActivityRoutes
 import com.laarasoft.moepay.activity.presentation.navigation.activityDestinations
 import com.laarasoft.moepay.auth.presentation.navigation.AuthGraphRoutes
 import com.laarasoft.moepay.auth.presentation.navigation.authGraph
+import com.laarasoft.moepay.chat.presentation.navigation.ChatRoutes
+import com.laarasoft.moepay.chat.presentation.navigation.chatDestinations
 import com.laarasoft.moepay.core.domain.onboarding.OnboardingStep
 import com.laarasoft.moepay.home.presentation.home.HomeDestination
 import com.laarasoft.moepay.onboarding.presentation.navigation.OnboardingGraphRoutes
@@ -90,11 +92,18 @@ fun NavigationRoot(
         composable<MainRoute> {
             val pendingLink by DeepLinks.pending.collectAsState()
             LaunchedEffect(pendingLink) {
-                DeepLinks.consume()?.let { navController.navigate(PaymentsRoutes.Transfer.fromQr(it)) }
+                val link = DeepLinks.consume() ?: return@LaunchedEffect
+                if (DeepLinks.isChat(link)) {
+                    DeepLinks.chatUsername(link)?.let { navController.navigate(ChatRoutes.NewChat(username = it)) }
+                } else {
+                    navController.navigate(PaymentsRoutes.Transfer.fromQr(link))
+                }
             }
             MainTabs(
                 onHomeNavigate = { navController.navigateTo(it) },
                 onWalletNavigate = { navController.navigateTo(it) },
+                onOpenConversation = { navController.navigate(ChatRoutes.Conversation(it)) },
+                onNewChat = { navController.navigate(ChatRoutes.NewChat()) },
             )
         }
         walletDestinations(navController)
@@ -105,6 +114,12 @@ fun NavigationRoot(
         activityDestinations(
             navController = navController,
             onOpenRequest = { navController.navigate(PaymentsRoutes.RequestDetail(it)) },
+        )
+        chatDestinations(
+            navController = navController,
+            onOpenRequest = { navController.navigate(PaymentsRoutes.RequestDetail(it)) },
+            onOpenTransaction = { navController.navigate(ActivityRoutes.TransactionDetail(it)) },
+            onOpenResetPin = { navController.navigate(WalletRoutes.Pin(PinMode.RESET)) },
         )
     }
 }
@@ -122,6 +137,7 @@ private fun NavController.navigateTo(destination: HomeDestination) {
         HomeDestination.SetPin -> navigate(WalletRoutes.Pin(PinMode.SET))
         HomeDestination.LinkBank -> navigate(WalletRoutes.LinkBank)
         HomeDestination.Profile -> navigate(WalletRoutes.Profile)
+        is HomeDestination.Message -> navigate(ChatRoutes.NewChat(userId = destination.userId))
     }
 }
 

@@ -3,6 +3,8 @@ package com.laarasoft.moepay.di
 import com.laarasoft.moepay.activity.data.di.activityDataModule
 import com.laarasoft.moepay.activity.presentation.di.activityPresentationModule
 import com.laarasoft.moepay.auth.presentation.di.authPresentationModule
+import com.laarasoft.moepay.chat.data.di.chatDataModule
+import com.laarasoft.moepay.chat.presentation.di.chatPresentationModule
 import com.laarasoft.moepay.core.data.di.coreDataModule
 import com.laarasoft.moepay.home.data.di.homeDataModule
 import com.laarasoft.moepay.home.presentation.di.homePresentationModule
@@ -32,6 +34,8 @@ fun initKoin(config: KoinAppDeclaration? = null) {
             paymentsPresentationModule,
             activityDataModule,
             activityPresentationModule,
+            chatDataModule,
+            chatPresentationModule,
         )
     }
 }

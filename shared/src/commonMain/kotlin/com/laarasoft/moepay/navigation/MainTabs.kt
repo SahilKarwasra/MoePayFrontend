@@ -22,7 +22,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-import com.laarasoft.moepay.chat.presentation.ChatRoot
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.laarasoft.moepay.chat.domain.ChatRepository
+import com.laarasoft.moepay.chat.presentation.list.ChatListRoot
+import org.koin.compose.koinInject
 import com.laarasoft.moepay.core.designsystem.icon.MoeIcon
 import com.laarasoft.moepay.core.designsystem.native.LocalBottomBarInset
 import com.laarasoft.moepay.core.designsystem.native.MoeNavigationBar
@@ -40,7 +43,11 @@ private enum class MainTab { HOME, WALLET, CHAT }
 fun MainTabs(
     onHomeNavigate: (HomeDestination) -> Unit,
     onWalletNavigate: (WalletDestination) -> Unit,
+    onOpenConversation: (conversationId: String) -> Unit,
+    onNewChat: () -> Unit,
+    chatRepository: ChatRepository = koinInject(),
 ) {
+    val unreadChats by chatRepository.observeTotalUnread().collectAsStateWithLifecycle(initialValue = 0)
     var selected by rememberSaveable { mutableIntStateOf(MainTab.HOME.ordinal) }
     val haptics = rememberHaptics()
 
@@ -60,7 +67,7 @@ fun MainTabs(
                 when (tab) {
                     MainTab.HOME -> HomeRoot(onNavigate = onHomeNavigate)
                     MainTab.WALLET -> WalletTabRoot(onNavigate = onWalletNavigate)
-                    MainTab.CHAT -> ChatRoot()
+                    MainTab.CHAT -> ChatListRoot(onOpenConversation = onOpenConversation, onNewChat = onNewChat)
                 }
             }
         }
@@ -68,7 +75,7 @@ fun MainTabs(
             items = listOf(
                 MoeNavigationItem("Home", MoeIcon.Home, MoeIcon.HomeFilled),
                 MoeNavigationItem("eWallet", MoeIcon.Wallet, MoeIcon.WalletFilled),
-                MoeNavigationItem("Chat", MoeIcon.Chat, MoeIcon.ChatFilled),
+                MoeNavigationItem("Chat", MoeIcon.Chat, MoeIcon.ChatFilled, badgeCount = unreadChats),
             ),
             selectedIndex = selected,
             onItemSelected = { index ->

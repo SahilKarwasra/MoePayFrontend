@@ -10,13 +10,23 @@ import kotlinx.coroutines.flow.asStateFlow
  */
 object DeepLinks {
     private const val PAY_PREFIX = "moepay://pay"
+    private const val CHAT_PREFIX = "moepay://chat"
 
     private val _pending = MutableStateFlow<String?>(null)
     val pending: StateFlow<String?> = _pending.asStateFlow()
 
     fun onNewUri(uri: String) {
-        if (uri.startsWith(PAY_PREFIX)) _pending.value = uri
+        if (uri.startsWith(PAY_PREFIX) || uri.startsWith(CHAT_PREFIX)) _pending.value = uri
     }
 
     fun consume(): String? = _pending.value.also { _pending.value = null }
+
+    fun isChat(uri: String): Boolean = uri.startsWith(CHAT_PREFIX)
+
+    /** The `u` (username) parameter of `moepay://chat?u=alex`. */
+    fun chatUsername(uri: String): String? =
+        uri.substringAfter('?', "").split('&')
+            .firstOrNull { it.startsWith("u=") }
+            ?.removePrefix("u=")
+            ?.takeIf { it.isNotBlank() }
 }

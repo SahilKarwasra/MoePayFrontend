@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.rememberNavController
 import com.laarasoft.moepay.activity.presentation.navigation.ActivityRoutes
 import com.laarasoft.moepay.auth.presentation.navigation.AuthGraphRoutes
+import com.laarasoft.moepay.chat.domain.ChatEngine
 import com.laarasoft.moepay.core.designsystem.theme.MoeTheme
 import com.laarasoft.moepay.core.domain.realtime.RealtimeEvents
 import com.laarasoft.moepay.core.presentation.util.ObserveAsEvents
@@ -32,13 +34,25 @@ fun App(
     darkTheme: Boolean = isSystemInDarkTheme(),
     viewModel: MainViewModel = koinViewModel(),
     realtimeEvents: RealtimeEvents = koinInject(),
+    chatEngine: ChatEngine = koinInject(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    // Live updates only while signed in and the app is visible; reconnects on return.
+    // Live updates, chat sync and the chat outbox run only while signed in and the app is
+    // visible; on return everything catches up.
     LifecycleStartEffect(state.isSignedIn) {
-        if (state.isSignedIn) realtimeEvents.start()
-        onStopOrDispose { realtimeEvents.stop() }
+        if (state.isSignedIn) {
+            realtimeEvents.start()
+            chatEngine.start()
+        }
+        onStopOrDispose {
+            chatEngine.stop()
+            realtimeEvents.stop()
+        }
+    }
+    // Signed out (or a different account next): nothing of the last user's chats stays on the device.
+    LaunchedEffect(state.isReady, state.isSignedIn) {
+        if (state.isReady && !state.isSignedIn) chatEngine.clear()
     }
 
     MoeTheme(darkTheme = darkTheme) {

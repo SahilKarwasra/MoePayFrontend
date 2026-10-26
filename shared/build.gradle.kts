@@ -34,6 +34,9 @@ kotlin {
             implementation(projects.feature.activity.data)
             implementation(projects.feature.activity.presentation)
 
+            implementation(projects.feature.chat.domain)
+            implementation(projects.feature.chat.data)
+            implementation(projects.feature.chat.database)
             implementation(projects.feature.chat.presentation)
         }
     }
